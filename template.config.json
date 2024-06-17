@@ -1,0 +1,19 @@
+{
+  "token": "YOUR_BOT_TOKEN",
+  "prefix": "@mention",
+  "spotify_client_id": "YOUR_SPOTIFY_CLIENT_ID",
+  "spotify_client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
+  "spotify_redirect_uri": "YOUR_SPOTIFY_REDIRECT_URI",
+  "commands": {
+    "play": "play",
+    "pause": "pause",
+    "resume": "resume",
+    "stop": "stop",
+    "skip": "skip",
+    "queue": "queue",
+    "join": "join",
+    "leave": "leave",
+    "help": "help",
+    "playlist": "playlist"
+  }
+}
