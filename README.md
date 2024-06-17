@@ -79,17 +79,15 @@ This Discord Music Bot allows users to play music from YouTube and Spotify in th
 
     
 
-    sh```    
+    ```sh    
     python oauth_server.py
     ```
 
 2.  **Run the bot:**
 
-    sh
-
-    Copy code
-
-    `python bot.py`
+    ```sh
+    python bot.py
+    ```
 
 ### Commands
 
@@ -97,157 +95,118 @@ Here are the available commands:
 
 -   **Play a song by URL or name:**
 
-    css
-
-    Copy code
-
-    `@BotName play [url or song name]`
+    ```css
+    @BotName play [url or song name]
+    ```
 
 -   **Pause the music:**
 
-    css
-
-    Copy code
-
-    `@BotName pause`
+    ```css
+    @BotName pause
+    ```
 
 -   **Resume the music:**
 
-    css
-
-    Copy code
-
-    `@BotName resume`
+    ```css
+    @BotName resume
+    ```
 
 -   **Stop the music and clear the queue:**
 
-    arduino
-
-    Copy code
-
-    `@BotName stop`
+    ```css
+    @BotName stop
+    ```
 
 -   **Skip the current track:**
 
-    sql
-
-    Copy code
-
-    `@BotName skip`
+    ```css
+    @BotName skip
+    ```
 
 -   **Show the current queue:**
 
-    arduino
-
-    Copy code
-
-    `@BotName queue`
+    ```css
+    @BotName queue
+    ```
 
 -   **Join your voice channel:**
 
-    perl
-
-    Copy code
-
-    `@BotName join`
+    ```css
+    @botname join
+    ```
 
 -   **Leave the voice channel and clear the queue:**
 
-    css
-
-    Copy code
-
-    `@BotName leave`
+    ```css
+    @BotName leave
+    ```
 
 -   **Create a playlist:**
 
-    sql
-
-    Copy code
-
-    `@BotName playlist create [name]`
+    ```css
+    @BotName playlist create [name]
+    ```
 
 -   **Add a song to a playlist:**
 
-    sql
-
-    Copy code
-
-    `@BotName playlist add [name] [url]`
+    ```css
+    @BotName playlist add [name] [url]
+    ```
 
 -   **Play a playlist:**
 
-    css
-
-    Copy code
-
-    `@BotName playlist play [name]`
+    ```css
+    @BotName playlist play [name]
+    ```
 
 -   **Get help with commands:**
 
-    bash
-
-    Copy code
-
-    `@BotName help`
+    ```css
+    @BotName help
+    ```
 
 ### Usage
 
 1.  **Play a song by name:**
 
-    css
-
-    Copy code
-
-    `@BotName play Bohemian Rhapsody`
+    ```css
+    @BotName play Bohemian Rhapsody
+    ```
 
 2.  **Play a song from Spotify:**
 
-    less
-
-    Copy code
-
-    `@BotName play https://open.spotify.com/track/3ZFTkvIE7kyPt6Nu3PEa7V`
+    ```css
+    @BotName play https://open.spotify.com/track/3ZFTkvIE7kyPt6Nu3PEa7V
+    ```
 
 3.  **View the queue:**
 
-    arduino
-
-    Copy code
-
-    `@BotName queue`
+    ```css
+    @BotName queue
+    ```
 
 4.  **Skip the current song:**
 
-    sql
-
-    Copy code
-
-    `@BotName skip`
+    ```css
+    @BotName skip
+    ```
 
 5.  **Stop the music and clear the queue:**
 
-    arduino
-
-    Copy code
-
-    `@BotName stop`
+    ```css
+    @BotName stop
 
 6.  **Join a voice channel:**
 
-    perl
-
-    Copy code
-
-    `@BotName join`
+    ```css
+    @BotName join
+    ```
 
 7.  **Leave a voice channel and clear the queue:**
 
-    css
-
-    Copy code
-
-    `@BotName leave`
+    ```css
+    @BotName leave
+    ```
 
 ### Contributing
 
