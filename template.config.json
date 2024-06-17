@@ -13,7 +13,7 @@
     "queue": "queue",
     "join": "join",
     "leave": "leave",
-    "help": "help",
+    "bothelp": "bothelp",
     "playlist": "playlist"
   }
 }
