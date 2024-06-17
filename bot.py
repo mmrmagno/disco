@@ -10,18 +10,23 @@ from io import BytesIO
 import asyncio
 from collections import deque
 import subprocess
+import configparser
 
-# Load configuration
-with open('config.json') as config_file:
-    config = json.load(config_file)
+# Parse configuration
+def parse_config(file_path):
+    config = configparser.ConfigParser(allow_no_value=True)
+    config.read(file_path)
+    config_dict = {section: dict(config.items(section)) for section in config.sections()}
+    return config_dict
 
-TOKEN = config['token']
-PREFIX_TYPE = config['prefix']
-DEVELOPER_ID = 249992281573031936
+config = parse_config('config.txt')
+TOKEN = config['DEFAULT'].get('token')
+PREFIX = config['DEFAULT'].get('prefix', '@mention')
+DEVELOPER_ID = int(config['DEFAULT'].get('owner', 0))
 
-SPOTIPY_CLIENT_ID = config['spotify_client_id']
-SPOTIPY_CLIENT_SECRET = config['spotify_client_secret']
-SPOTIPY_REDIRECT_URI = config['spotify_redirect_uri']
+SPOTIPY_CLIENT_ID = config['DEFAULT'].get('spotify_client_id')
+SPOTIPY_CLIENT_SECRET = config['DEFAULT'].get('spotify_client_secret')
+SPOTIPY_REDIRECT_URI = config['DEFAULT'].get('spotify_redirect_uri')
 
 sp_oauth = SpotifyOAuth(
     client_id=SPOTIPY_CLIENT_ID,
@@ -33,10 +38,10 @@ sp_oauth = SpotifyOAuth(
 intents = discord.Intents.default()
 intents.message_content = True
 
-if PREFIX_TYPE == "@mention":
+if PREFIX == "@mention":
     bot = commands.Bot(command_prefix=commands.when_mentioned, intents=intents, description="A versatile music bot supporting YouTube and Spotify streaming.")
 else:
-    bot = commands.Bot(command_prefix=PREFIX_TYPE, intents=intents, description="A versatile music bot supporting YouTube and Spotify streaming.")
+    bot = commands.Bot(command_prefix=PREFIX, intents=intents, description="A versatile music bot supporting YouTube and Spotify streaming.")
 
 queue = deque()
 current_track = None
@@ -45,17 +50,21 @@ progress_task = None
 @bot.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {bot.user}')
+    # Set status and game
+    game = config['DEFAULT'].get('game', 'DEFAULT')
+    if game != 'DEFAULT':
+        await bot.change_presence(activity=discord.Game(name=game))
 
 @bot.event
 async def on_message(message):
     if message.author.bot:
         return
-    if PREFIX_TYPE == "@mention" and bot.user.mentioned_in(message):
+    if PREFIX == "@mention" and bot.user.mentioned_in(message):
         await bot.process_commands(message)
-    elif PREFIX_TYPE != "@mention":
+    elif PREFIX != "@mention":
         await bot.process_commands(message)
 
-@bot.command(name=config['commands']['play'])
+@bot.command(name=config['DEFAULT'].get('play', 'play'))
 async def play(ctx, *, query):
     global current_track, progress_task
 
@@ -185,25 +194,25 @@ def create_progress_embed(title, elapsed, duration):
     embed.add_field(name="Progress", value=f"`[{bar}] {elapsed // 60}:{elapsed % 60:02d} / {duration // 60}:{duration % 60:02d}`")
     return embed
 
-@bot.command(name=config['commands']['pause'])
+@bot.command(name=config['DEFAULT'].get('pause', 'pause'))
 async def pause(ctx):
     ctx.voice_client.pause()
 
-@bot.command(name=config['commands']['resume'])
+@bot.command(name=config['DEFAULT'].get('resume', 'resume'))
 async def resume(ctx):
     ctx.voice_client.resume()
 
-@bot.command(name=config['commands']['stop'])
+@bot.command(name=config['DEFAULT'].get('stop', 'stop'))
 async def stop(ctx):
     ctx.voice_client.stop()
     global queue
     queue.clear()
 
-@bot.command(name=config['commands']['skip'])
+@bot.command(name=config['DEFAULT'].get('skip', 'skip'))
 async def skip(ctx):
     ctx.voice_client.stop()
 
-@bot.command(name=config['commands']['queue'])
+@bot.command(name=config['DEFAULT'].get('queue', 'queue'))
 async def queue_command(ctx):
     if not queue:
         await ctx.send("The queue is empty.")
@@ -212,7 +221,7 @@ async def queue_command(ctx):
     queue_list = "\n".join([track['title'] for track in queue])
     await ctx.send(f"Current queue:\n{queue_list}")
 
-@bot.command(name=config['commands']['join'])
+@bot.command(name=config['DEFAULT'].get('join', 'join'))
 async def join(ctx):
     if not ctx.message.author.voice:
         await ctx.send(f"{ctx.message.author.name} is not connected to a voice channel")
@@ -221,13 +230,13 @@ async def join(ctx):
         channel = ctx.message.author.voice.channel
     await channel.connect()
 
-@bot.command(name=config['commands']['leave'])
+@bot.command(name=config['DEFAULT'].get('leave', 'leave'))
 async def leave(ctx):
     await ctx.voice_client.disconnect()
     global queue
     queue.clear()
 
-@bot.command(name=config['commands']['playlist'])
+@bot.command(name=config['DEFAULT'].get('playlist', 'playlist'))
 async def playlist(ctx, action, name=None, *, url=None):
     if action == 'create' and name:
         # Logic to create a playlist
@@ -241,9 +250,9 @@ async def playlist(ctx, action, name=None, *, url=None):
     else:
         await ctx.send("Invalid playlist command.")
 
-@bot.command(name=config['commands']['bothelp'])
+@bot.command(name=config['DEFAULT'].get('bothelp', 'bothelp'))
 async def bothelp(ctx):
-    prefix = PREFIX_TYPE if PREFIX_TYPE != "@mention" else f"@{bot.user.name}"
+    prefix = PREFIX if PREFIX != "@mention" else f"@{bot.user.name}"
     help_text = f"""
     **Disco Bot Commands:**
     **Music Commands**
