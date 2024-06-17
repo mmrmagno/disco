@@ -6,7 +6,8 @@ import json
 
 app = FastAPI()
 
-with open(config.json) as config_file:
+# Load configuration
+with open('config.json') as config_file:
     config = json.load(config_file)
 
 SPOTIPY_CLIENT_ID = config['spotify_client_id']
@@ -21,10 +22,12 @@ sp_oauth = SpotifyOAuth(
 )
 
 @app.get("/")
-    auth_url = sp_oath.get_authorize_url()
+async def login():
+    auth_url = sp_oauth.get_authorize_url()
     return RedirectResponse(auth_url)
 
 @app.get("/callback")
+async def callback(request: Request):
     code = request.query_params.get('code')
     token_info = sp_oauth.get_access_token(code)
     return {"access_token": token_info['access_token']}
