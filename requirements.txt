@@ -1,0 +1,4 @@
+discord.py
+youtube-dl
+spotipy
+soundcloud-lib
