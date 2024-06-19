@@ -1,19 +1,76 @@
 {
-  "token": "YOUR_BOT_TOKEN",
-  "prefix": "@mention",
-  "spotify_client_id": "YOUR_SPOTIFY_CLIENT_ID",
-  "spotify_client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
-  "spotify_redirect_uri": "YOUR_SPOTIFY_REDIRECT_URI",
-  "commands": {
-    "play": "play",
-    "pause": "pause",
-    "resume": "resume",
-    "stop": "stop",
-    "skip": "skip",
-    "queue": "queue",
-    "join": "join",
-    "leave": "leave",
-    "bothelp": "bothelp",
-    "playlist": "playlist"
-  }
+    "token": "YOUR_DISCORD_BOT_TOKEN",
+    "owner_id": "YOUR_DISCORD_USER_ID",
+    "prefix": "!",
+    "game": "Listening to music",
+    "status": "ONLINE",
+    "songinstatus": true,
+    "altprefix": "$",
+    "emojis": {
+        "success": "🎶",
+        "warning": "💡",
+        "error": "🚫",
+        "loading": "⌚",
+        "searching": "🔎"
+    },
+    "help": "help",
+    "npimages": true,
+    "stayinchannel": true,
+    "maxtime": 0,
+    "maxytplaylistpages": 10,
+    "skipratio": 0.55,
+    "alonetimeuntilstop": 300,
+    "playlistsfolder": "Playlists",
+    "updatealerts": true,
+    "lyrics": {
+        "default": "A-Z Lyrics"
+    },
+    "aliases": {
+        "general": {
+            "settings": ["status"]
+        },
+        "music": {
+            "lyrics": [],
+            "nowplaying": ["np", "current"],
+            "play": [],
+            "playlists": ["pls"],
+            "queue": ["list"],
+            "remove": ["delete"],
+            "scsearch": [],
+            "search": ["ytsearch"],
+            "shuffle": [],
+            "skip": ["voteskip"]
+        },
+        "admin": {
+            "prefix": ["setprefix"],
+            "setdj": [],
+            "setskip": ["setskippercent", "skippercent", "setskipratio"],
+            "settc": [],
+            "setvc": []
+        },
+        "dj": {
+            "forceremove": ["forcedelete", "modremove", "moddelete", "modelete"],
+            "forceskip": ["modskip"],
+            "movetrack": ["move"],
+            "pause": [],
+            "playnext": [],
+            "queuetype": [],
+            "repeat": [],
+            "skipto": ["jumpto"],
+            "stop": ["leave"],
+            "volume": ["vol"]
+        }
+    },
+    "loglevel": "info",
+    "transforms": {},
+    "eval": {
+        "enabled": false,
+        "engine": "Nashorn"
+    },
+    "spotify": {
+        "client_id": "YOUR_SPOTIFY_CLIENT_ID",
+        "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
+        "redirect_uri": "YOUR_SPOTIFY_REDIRECT_URI"
+    }
 }
+
