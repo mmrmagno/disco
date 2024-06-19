@@ -1,7 +1,7 @@
 {
     "token": "YOUR_DISCORD_BOT_TOKEN",
     "owner_id": "YOUR_DISCORD_USER_ID",
-    "prefix": "!",
+    "prefix": "@mention",
     "game": "Listening to music",
     "status": "ONLINE",
     "songinstatus": true,
