@@ -1,7 +1,20 @@
 {
+  "name": "disco-bot",
+  "version": "1.0.0",
+  "description": "![Disco Logo](https://www.marc-os.com/disco.webp)",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
+    "discord.js": "^14.15.3",
     "express": "^4.19.2",
-    "querystring": "^0.2.1"
+    "spotify-web-api-node": "^5.0.2",
+    "ytdl-core": "^4.11.5"
   }
 }
