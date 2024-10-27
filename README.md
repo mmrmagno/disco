@@ -160,4 +160,4 @@ If you need help with the bot:
 - All contributors
 
 ---
-Made with ❤️ by [Your Name]
+Made with ❤️ by Marc
