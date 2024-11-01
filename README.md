@@ -150,7 +150,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 If you need help with the bot:
 1. Check the [Troubleshooting](#troubleshooting) section
 2. Open an issue on GitHub
-3. Join our Discord support server [link]
 
 ## ✨ Acknowledgments
 
