@@ -54,6 +54,7 @@ yt_dlp_opts = {
     'reconnect': True,
     'reconnect_streamed': True,
     'reconnect_delay_max': 5,
+    'cookiefile': 'youtube_cookies.txt'
 }
 
 class Song:
