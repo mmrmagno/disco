@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: musicbot
+    container_name: disco 
     env_file:
       - .env
     volumes:
