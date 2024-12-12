@@ -1,4 +1,4 @@
-# 🎵 Discord Music Bot
+# 🎵 Disco
 
 A professional and feature-rich Discord music bot with advanced playlist management, audio controls, and detailed statistics tracking. Built with discord.py and yt-dlp.
 
